@@ -1,5 +1,5 @@
 {
-  "name": "jamestaylr/portfolio-website",
+  "name": "jamestaylr-portfolio-website",
   "version" : "0.0.1",
   "main": "server.js",
   "dependencies": {
