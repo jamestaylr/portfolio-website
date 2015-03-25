@@ -1,0 +1,71 @@
+/* Colors Variables */
+@accent-color: #72aa36;
+@text-color: #615851;
+
+/* Layout Variables */
+@content-width: 750px;
+
+/* Fonts Variables */
+@heading-font: "Lato", "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+@body-font: "Lato", "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+
+::selection {
+    background-color: lighten(@accent-color, 40%);
+}
+
+::-moz-selection {
+	background-color: lighten(@accent-color, 40%);
+}
+
+a {
+    &:hover {
+        text-decoration: none;
+    	border-bottom: 2px solid @accent-color;
+    }
+
+    &:visited {
+        color: darken(@accent-color, 20%);
+        border-bottom: 2px solid darken(@accent-color, 20%);
+    }
+
+    color: @accent-color;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.heading () {
+    color: @text-color;
+    font-family: @heading-font;
+    margin-top: 25px;
+}
+
+h1 {
+    .heading;
+    font-size: 2.4em;
+    font-weight: bold;
+}
+
+h2 {
+    .heading;
+    font-size: 1.5em;
+}
+
+h3 {
+    .heading;
+    font-size: 1.17em;
+    font-weight: bold;
+}
+
+p {
+    color: @text-color;
+    font-family: @body-font, sans-serif;
+    font-weight: 300;
+    font-size: 1em;
+    margin-top: 15px;
+}
+
+span {
+	color: lighten(@text-color, 40%);
+	font-size: 0.8em;
+}
+
