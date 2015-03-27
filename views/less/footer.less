@@ -1,0 +1,72 @@
+@github: #636363;
+@stackoverflow: #f27922;
+@instagram: #8f5f46;
+
+
+/* Create the font */
+@font-face {
+	font-family: 'Mono Social Icons Font';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../fonts/MonoSocialIconsFont-1.10.ttf) format(truetype);
+}
+
+footer {
+
+	a, a:before {
+		.optimize(-moz-text-rendering);
+		.optimize(-ms-font-smoothing);
+		.optimize(-o-font-smoothing);
+		.optimize(-webkit-font-smoothing);
+		.optimize(font-smoothing);
+		.optimize(text-rendering);
+
+		font-family: 'Mono Social Icons Font';
+		font-size: 32px;
+
+		.transition(opacity);
+		opacity: 0.6;
+	}
+
+	a:before {
+		content: attr(title);
+		font-size: 130%;
+	}
+
+
+	a:hover {
+		.transition(opacity);
+		opacity: 1;
+	}
+
+	a:nth-of-type(1) {
+		.footer-item(@github);
+	}
+
+	a:nth-of-type(2) {
+		.footer-item(@stackoverflow);
+	}
+
+	a:nth-of-type(3) {
+		.footer-item(@instagram);
+	}
+	
+}
+
+.optimize(@property) {
+	@{property}: optimizeLegibility;
+	@{property}: antialiased;
+}
+
+.transition (@property: all , @duration: 0.5s , @function: ease , @delay: 0s) {
+    transition: @property @duration @function @delay;
+    -webkit-transition: @property @duration @function @delay;
+    -moz-transition: @property @duration @function @delay;
+    -o-transition: @property @duration @function @delay;
+}
+
+.footer-item(@color) {
+	color: @color;
+	/* border-bottom: 2px solid @color; */
+	border-bottom: 0;
+}
