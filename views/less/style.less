@@ -69,3 +69,35 @@ span {
 	font-size: 0.8em;
 }
 
+blockquote {
+    font-size: 1.2em;
+}
+
+/* Sections and Content Layout */
+.layout () {
+	margin-left: ~"calc((100% - @{content-width})/2)";
+	max-width: calc(@content-width - (25px * 2));
+    padding: 25px;
+}
+
+main {
+	.layout;
+	margin-top: 100px;
+}
+
+footer {
+	.layout;
+	margin-top: 50px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+/* Responsive Design Elements */
+
+@media screen and (max-width: @content-width){
+    main, footer {
+        margin-left: 0;
+        min-width: 200px;
+    }
+}
+
