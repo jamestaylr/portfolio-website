@@ -6,7 +6,7 @@
 @content-width: 750px;
 
 /* Fonts Variables */
-@heading-font: 'Arimo', "Helvetica-Neue", "Helvetica", Arial, sans-serif;
+@heading-font: "Helvetica-Neue", "Helvetica", Arial, sans-serif;
 @body-font: 'Arimo', "Helvetica-Neue", "Helvetica", Arial, sans-serif;
 
 ::selection {
@@ -99,5 +99,19 @@ footer {
         margin-left: 0;
         min-width: 200px;
     }
+}
+
+/* Tools and Generic Methods */
+.border-radius (@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.transition (@property: all , @duration: 0.5s , @function: ease , @delay: 0s) {
+    transition: @property @duration @function @delay;
+    -webkit-transition: @property @duration @function @delay;
+    -moz-transition: @property @duration @function @delay;
+    -o-transition: @property @duration @function @delay;
 }
 
