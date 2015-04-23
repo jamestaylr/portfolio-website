@@ -1,12 +1,57 @@
+// Native Library Imports
 var http = require('http');
+var fs = require('fs');
+var path = require('path');
+
+// Dependency Library Imports
 var express = require('express');
+var marked = require('marked');
 
-var app = express();
-app.set('view engine', 'ejs');
+var domain = require('domain');
+var d = domain.create();
 
-// Setup the index page view
-app.get('/', function(req, res) {
-	res.render('pages/index');
+// Generate a log file
+var fs = require('fs');
+var util = require('util');
+var log_file = fs.createWriteStream(__dirname + '/sys.log', {
+    flags: 'a'
+});
+var log_stdout = process.stdout;
+
+// Defines the port the server will run on
+var port = 8080;
+
+d.on('error', function(err) {
+    console.error(err);
+});
+
+// Create the path to the content
+var filePath = path.join(__dirname, 'views/pages/content.md');
+
+// Read the contents of the file
+fs.readFile(filePath, {
+    encoding: 'utf-8'
+}, function(err, data) {
+    if (err) {
+        return console.log(err);
+    }
+
+    formattedContent = marked(data);
+
+    // Create Express and set up the EJS view engine
+    var app = express();
+    app.set('view engine', 'ejs');
+    app.use("/resources", express.static(__dirname + "/resources"));
+
+    // Setup the index page view
+    app.get('/', function(req, res) {
+        console.log(getFormattedDate() + req.method + " " + req.url + " by " + req.connection.remoteAddress);
+        res.render('pages/index', {
+            title: "James Taylor",
+            content: formattedContent
+        });
+    });
+
     // Defines error handling
     app.use(function(req, res, next) {
         res.status(404);
@@ -46,7 +91,7 @@ function getFormattedDate() {
 
 /*
  * Overloads the logging function 
- */ 
+ */
 console.log = console.error = function(message) {
     log_file.write(util.format(message) + '\n');
     log_stdout.write(util.format(message) + '\n');
