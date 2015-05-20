@@ -1,3 +1,7 @@
+/* Colors Variables */
+@accent-color: #72aa36;
+@text-color: #615851;
+
 @github: #636363;
 @stackoverflow: #f27922;
 @instagram: #8f5f46;
@@ -13,6 +17,11 @@
 
 footer {
 
+	span {
+		color: lighten(@text-color, 40%);
+		font-size: 0.8em;
+	}
+
 	a, a:before {
 		.optimize(-moz-text-rendering);
 		.optimize(-ms-font-smoothing);
@@ -22,15 +31,16 @@ footer {
 		.optimize(text-rendering);
 
 		font-family: 'Mono Social Icons Font';
-		font-size: 32px;
+		font-size: 44px;
 
 		.transition(opacity);
 		opacity: 0.6;
+
+		padding: 5px;
 	}
 
 	a:before {
 		content: attr(title);
-		font-size: 130%;
 	}
 
 
