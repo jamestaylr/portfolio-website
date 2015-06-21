@@ -6,17 +6,7 @@ print_message() {
 
 print_message 'Precompiling the CSS...'
 
-# Searches the CSS directory for LESS files
-for file in views/less/*.less
-do
-    FROM=$file
-    TO=${file/.*/.css}
-    TO=${TO/less/css}
-    TO=${TO/views/resources}
-    echo "$FROM -> $TO"
-    # Compiles each LESS file into a CSS file of the same name with minified output
-    lessc --clean-css $FROM $TO
-done
+lessc --clean-css views/less/style.less resources/style.css
 
 print_message 'Starting Node process!'
 node server.js
