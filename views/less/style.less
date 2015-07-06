@@ -2,73 +2,104 @@
 @import "reset";
 
 ::selection {
-    background-color: lighten(@accent-color, 40%);
+  background-color: lighten(@accent-color, 40%);
 }
 
 ::-moz-selection {
-	background-color: lighten(@accent-color, 40%);
+  background-color: lighten(@accent-color, 40%);
+}
+
+section {
+  background-color: white;
+  padding: 15px;
 }
 
 a {
-    &:hover {
-        text-decoration: none;
-    	border-bottom: 2px solid @accent-color;
-    }
-
-    &:visited {
-        color: darken(@accent-color, 20%);
-        border-bottom: 2px solid darken(@accent-color, 20%);
-    }
-
-    color: @accent-color;
+  &:hover {
     text-decoration: none;
-    cursor: pointer;
+  	border-bottom: 2px solid @accent-color;
+  }
+
+  &:visited {
+    color: darken(@accent-color, 20%);
+    border-bottom: 2px solid darken(@accent-color, 20%);
+  }
+
+  color: @accent-color;
+  text-decoration: none;
+  cursor: pointer;
 }
 
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
 .heading () {
-    color: @text-color;
-    font-family: @heading-font;
-    margin-top: 25px;
+  color: @text-color;
+  font-family: @heading-font;
+  margin-top: 25px;
 }
 
 h1 {
-    .heading;
-    font-size: 2.4em;
-    font-weight: bold;
+  .heading;
+  font-size: 2.4em;
+  font-weight: 500;
+
+  @padding: 15px;
+  @background-color: white;
+
+  padding: @padding;
+  margin-left: @padding;
+  background-color: @background-color;
+  display: inline;
+  padding-left: 0;
+  padding-right: 0;
+  -webkit-box-decoration-break: clone;
+  -ms-box-decoration-break: clone;
+  -o-box-decoration-break: clone;
+  box-decoration-break: clone;
+  box-shadow:
+    @padding 0 0 @background-color,
+    -@padding 0 0 @background-color;
 }
 
 h2 {
-    .heading;
-    font-size: 1.5em;
+  .heading;
+  font-size: 1.68em;
+  font-weight: 400;
 }
 
 h3 {
-    .heading;
-    font-size: 1.17em;
-    font-weight: bold;
+  .heading;
+  font-size: 1.47em;
+  font-weight: 400;
 }
 
 .default () {
-    color: @text-color;
-    font-family: @body-font, sans-serif;
-    font-weight: 300;
-    font-size: 1em;
-    margin-top: 15px;
+  color: @text-color;
+  font-family: @body-font, sans-serif;
+  font-weight: 300;
+  font-size: 1em;
+  margin-top: 15px;
 }
 
 p {
-    .default;
+  .default;
 }
 
 blockquote {
-    font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 /* Sections and Content Layout */
 .layout () {
-	margin-left: ~"calc((100% - @{content-width})/2)";
-	max-width: calc(@content-width - (25px * 2));
-    padding: 25px;
+  margin-left: ~"calc((100% - @{content-width})/2)";
+  max-width: calc(@content-width - (25px * 2));
+  padding: 25px;
 }
 
 main {
@@ -84,42 +115,40 @@ footer {
 }
 
 ul {
+  .default;
+  margin-left: 25px;
 
-    .default;
+  li {
+    list-style-type: none;
 
-    margin-left: 25px;
-
-    li {
-        list-style-type: none;
-
-        span[role = icon] {
-            padding-right: 10px;
-            width: 25px;
-        }
+    span[role = icon] {
+        padding-right: 10px;
+        width: 25px;
     }
+  }
 }
 
 /* Responsive Design Elements */
 
 @media screen and (max-width: @content-width){
-    main, footer {
-        margin-left: 0;
-        min-width: 200px;
-    }
+  main, footer {
+    margin-left: 0;
+    min-width: 200px;
+  }
 }
 
 /* Tools and Generic Methods */
 .border-radius (@radius) {
-    -webkit-border-radius: @radius;
-    -moz-border-radius: @radius;
-    border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
 }
 
 .transition (@property: all , @duration: 0.5s , @function: ease , @delay: 0s) {
-    transition: @property @duration @function @delay;
-    -webkit-transition: @property @duration @function @delay;
-    -moz-transition: @property @duration @function @delay;
-    -o-transition: @property @duration @function @delay;
+  transition: @property @duration @function @delay;
+  -webkit-transition: @property @duration @function @delay;
+  -moz-transition: @property @duration @function @delay;
+  -o-transition: @property @duration @function @delay;
 }
 
 @import "footer";
